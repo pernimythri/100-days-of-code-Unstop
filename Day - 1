@@ -1,0 +1,135 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+
+void fun(vector<int> &arr,int n,int t)
+{
+   int l=0,r=n-1;
+   while(l<r)
+   {
+   long long sum=arr[l]+arr[r];
+   if(sum==t)
+   cout<<l<<" "<<r;
+   else if(sum<t)
+   l++;
+   else
+   r++;
+   }
+}
+
+int main() {
+    int n, t;
+    cin >> n >> t;
+    vector<int> arr(n);
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
+   fun(arr,n,t);
+}
+
+------------------------------------------------------------------------------------------------------------------------
+
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+void  fun(string s)
+{
+    char alpha=s[0];
+    int num=s[1];
+    if(alpha=='a'|| alpha=='c'||alpha=='e'||alpha=='g')
+    {
+        if(num=='1' || num=='3' ||num=='5'||num=='7'){
+            cout<<"Black";
+        }
+       else cout<<"White";
+    }
+    if(alpha=='b'|| alpha=='d'||alpha=='f'||alpha=='h')
+    {
+        if(num=='2' || num=='4' ||num=='6'||num=='8'){
+            cout<<"Black";
+        }
+       else cout<<"White";
+    }
+}
+
+int main() {
+  string s;
+  cin>>s;
+  fun(s);
+}
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+int main() {
+   int n,m,ai,bi;
+   vector<int>going(n+1,0);
+   vector<int>coming(n+1,0);
+   cin>>n>>m;
+   for(int i=0;i<m;i++)
+   {
+    cin>>ai;
+    cin>>bi;
+    going[ai]++;
+    coming[bi]++;
+   }
+   for(int i=1;i<=n;i++)
+   {
+    if(going[i]==0 && coming[i]==n-1)
+    {
+    cout<<i<<endl;
+    return 0;
+    }
+   }
+   cout<<"-1";
+}
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+#include<map>
+using namespace std;
+
+
+string fun(vector<string>sarray,int n,int k)
+{
+    map<string,int>mpp;
+    for(int i=0;i<n;i++)
+    {
+        mpp[sarray[i]]++;
+    }
+    vector<string>unique;
+    for(auto str:sarray)
+    {
+        if(mpp[str]==1)
+        unique.push_back(str);
+    }
+    if(unique.size()<k)
+    return "-1";
+    return unique[k-1];
+}
+
+int main() {
+    int n;
+    cin>>n;
+    vector<string>sarray(n);
+    for(int i=0;i<n;i++)
+    {
+        cin>>sarray[i];
+    }
+    int k;
+    cin>>k;
+    cout<<fun(sarray,n,k);
+}
